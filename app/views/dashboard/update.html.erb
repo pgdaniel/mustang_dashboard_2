@@ -1,0 +1,5 @@
+<h1>Dashboard#show???</h1>
+<p>Find me in app/views/dashboard/show.html.erb</p>
+
+<!-- have a button POST via AJAX -->
+<%= button_to "Update post", @post, method: :delete, data: { "hx-patch": url_for(@post), "hx-swap": "outerHTML", "hx-target": "body" } %>
