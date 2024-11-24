@@ -3,7 +3,7 @@
 # not a terminal started via bin/rails console! Add "console" to any action or any ERB template view
 # to make the web console appear.
 development:
-adapter: redis
+  adapter: redis
   url: <%= ENV.fetch("REDIS_URL", "redis://localhost:6379/0") %>
   channel_prefix: app_development
 test:
