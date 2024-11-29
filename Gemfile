@@ -45,6 +45,7 @@ gem "thruster", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "pry", "~> 0.15.0"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
@@ -67,3 +68,13 @@ end
 # gem "rails-htmx", "~> 0.1.3"
 
 gem "redis", "~> 5.3"
+
+# gem "google-protobuf", "~> 4.28"
+gem "google-protobuf", "~> 3.25"
+
+gem "bunny", "~> 2.23"
+
+gem "sidekiq", "~> 7.3"
+
+
+gem "rabbit_engine", path: "rabbit_engine"

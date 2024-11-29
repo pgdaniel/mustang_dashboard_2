@@ -1,55 +1,51 @@
 import consumer from "./consumer"
+(function () {
+  let gear = 0;
+  let speed = 0;
+  let rpm = 0;
+  let temp_f = 0;
+  let oilPressure = 0;
+  let gearComponent = document.getElementById("gear");
+  let speedComponent = document.getElementById("speed");
+  let rpmComponent = document.getElementById("rpm");
+  let tempComponent = document.getElementById("temp");
+  let oilPressureComponent = document.getElementById("pressure");
 
-consumer.subscriptions.create("DashboardChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+  consumer.subscriptions.create("DashboardChannel", {
+    connected() {
+    },
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+    disconnected() {
+    },
 
-  received(data) {
-    console.log("DATA", data);
+    received(data) {
+      // console.log(data)
+      let vehicle = JSON.parse(data);
 
-    let incomingData = JSON.parse(data);
+      if (vehicle.gear) {
+        gear = parseInt(vehicle.gear);
+        gearComponent.textContent = gear;
+      }
+      if (vehicle.mph) {
+        speed = parseInt(vehicle.mph);
+        speedComponent.textContent = speed;
+      }
+      if('engine' in vehicle) {
+        let engine = vehicle.engine;
 
-    let result = incomingData.incoming_data;
-    console.log("RESULT", result);
-
-    switch(result) {
-      case "speed":
-        console.log("SPEED", result);
-        let speedComponent = document.getElementById("speed");
-        speedComponent.textContent = incomingData.data;
-        break;
-      case "rpm":
-        console.log("RPM", result);
-        let rpmComponent = document.getElementById("rpm");
-        rpmComponent.textContent = incomingData.data;
-        break;
-      case "wheel_speed_1":
-        console.log("WHEEL_SPEED 1", result);
-        let wheelSpeedComponent1 = document.getElementById("wheel_speed_1");
-        wheelSpeedComponent1.textContent = incomingData.data;
-        break;
-      case "wheel_speed_2":
-        console.log("WHEEL_SPEED 2", result);
-        let wheelSpeedComponent2 = document.getElementById("wheel_speed_2");
-        wheelSpeedComponent2.textContent = incomingData.data;
-        break;
-      case "wheel_speed_3":
-        console.log("WHEEL_SPEED 3", result);
-        let wheelSpeedComponent3 = document.getElementById("wheel_speed_3");
-        wheelSpeedComponent3.textContent = incomingData.data;
-        break;
-      case "wheel_speed_4":
-        console.log("WHEEL_SPEED 4", result);
-        let wheelSpeedComponent4 = document.getElementById("wheel_speed_4");
-        wheelSpeedComponent4.textContent = incomingData.data;
-        break;
-      default:
-        console.log("DEFAULT");
+        if ('rpm' in engine) {
+          rpm = parseInt(vehicle.engine.rpm);
+          rpmComponent.textContent = rpm;
+        }
+        if ('temp_f' in engine) {
+          temp_f = parseInt(vehicle.engine.temp_f);
+          tempComponent.textContent = temp_f;
+        }
+        if ('oil_pressure_psi' in engine) {
+          oilPressure = parseInt(vehicle.engine.oil_pressure_psi);
+          oilPressureComponent.textContent = oilPressure;
+        }
+      }
     }
-  }
-});
+  });
+})();

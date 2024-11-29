@@ -25,8 +25,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 
-<body hx-headers='{"X-CSRF-Token": "<%= form_authenticity_token %>"}'>
+<body>
     <div class="container">
+    <nav>
+        <ul>
+            <li><strong>S197</strong></li>
+        </ul>
+        <ul>
+        </ul>
+    </nav>
     <%= yield %>
     </div>
 </body>

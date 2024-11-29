@@ -1,0 +1,39 @@
+cars:
+  - make: Toyota
+    model: Corolla
+    year: 2021
+    engine:
+      type: Inline-4
+      displacement: 1.8L
+      horsepower: 139
+      torque: 126 lb-ft
+      fuel_type: Gasoline
+  
+  - make: Ford
+    model: Mustang GT
+    year: 2022
+    engine:
+      type: V8
+      displacement: 5.0L
+      horsepower: 450
+      torque: 410 lb-ft
+      fuel_type: Gasoline
+  
+  - make: Tesla
+    model: Model 3
+    year: 2023
+    engine:
+      type: Electric
+      power: 283 hp (rear-wheel drive)
+      torque: 310 lb-ft
+      battery_capacity: 50 kWh
+
+  - make: BMW
+    model: M4 Competition
+    year: 2024
+    engine:
+      type: Inline-6 Twin-Turbo
+      displacement: 3.0L
+      horsepower: 510
+      torque: 479 lb-ft
+      fuel_type: Gasoline
